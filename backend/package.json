@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend da aplicação Tasks",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest",
+    "start": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "Ricardo Rodrigues",
+  "license": "ISC",
+  "dependencies": {
+    "celebrate": "^12.0.1",
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "jest": "^25.2.4",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  }
+}

@@ -31,6 +31,7 @@ Desenvolvido em ReactJS
 - [Supertest](https://www.npmjs.com/package/supertest)
 - [Nodemon](https://nodemon.io/)
 - [Cross-env](https://www.npmjs.com/package/cross-env)
+- Banco de Dados: [SQLite](https://www.sqlite.org/index.html)
 
 ## Instalação
 

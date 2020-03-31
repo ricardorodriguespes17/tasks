@@ -1,0 +1,116 @@
+.task-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.task-container-small {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.task-container header,
+.task-container-small header {
+    justify-content: start;
+    height: 10%;
+}
+
+.task-container header text,
+.task-container-small header text {
+    margin-left: 20px;
+    color: #87CEFA;
+    font-size: 36px;
+}
+
+.task-container .time-box,
+.task-container-small .time-box {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    height: 10%;
+}
+
+.task-container .time-box text,
+.task-container-small .time-box text {
+    margin-left: 10px;
+}
+
+.task-container .description-box {
+    padding: 10px 20px;
+    height: 65%;
+}
+
+.task-container-small .description-box {
+    padding: 10px 20px;
+    height: 60%;
+}
+
+.task-container .description-box text,
+.task-container-small .description-box text {
+    font-size: 24px;
+}
+
+.task-container .buttons-box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 15%;
+    justify-content: space-around;
+}
+
+.task-container-small .buttons-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+    justify-content: space-around;
+}
+
+.task-container .buttons-box .button-start {
+    width: 45%;
+    height: 60px;
+    background-color: #DDD;
+}
+
+.task-container-small .buttons-box .button-start {
+    width: 100%;
+    height: 60px;
+    background-color: #DDD;
+}
+
+.task-container .buttons-box .button-start text {
+    font-size: 28px;
+    color: #006400;
+}
+
+.task-container-small .buttons-box .button-start text {
+    font-size: 18px;
+    color: #006400;
+}
+
+.task-container .buttons-box .button-finish {
+    width: 45%;
+    height: 60px;
+    background-color: #DDD;
+}
+
+.task-container-small .buttons-box .button-finish {
+    width: 100%;
+    height: 60px;
+    background-color: #DDD;
+}
+
+.task-container .buttons-box .button-finish text {
+    font-size: 28px;
+    color: #EE0000;
+}
+
+.task-container-small .buttons-box .button-finish text {
+    font-size: 18px;
+    color: #EE0000;
+}

@@ -1,0 +1,109 @@
+.finisheds-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.finisheds-container-small {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.finisheds-container-small header text {
+    font-size: 20px;
+}
+
+.finisheds-container .body, 
+.finisheds-container-small .body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.finisheds-container .body ul,
+.finisheds-container-small .body ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    list-style: none;
+}
+
+.finisheds-container .body li{
+    background-color: #87CEFA;
+    width: 80%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+} 
+
+.finisheds-container-small .body li {
+    background-color: #87CEFA;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.finisheds-container .body li text, 
+.finisheds-container-small .body li text {
+    color: #222;
+    font-size: 18px;
+}
+
+.finisheds-container .body .title-task {
+    width: 20%;
+    height: 100%;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.finisheds-container .body .title-task text, 
+.finisheds-container-small .body .title-task text {
+    font-size: 28px;
+}
+
+.finisheds-container .body .description-task-box {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.finisheds-container .body .time-task-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.finisheds-container .body button {
+    height: 100%;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.finisheds-container-small .body button {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.finisheds-container-small .body .title-task,
+.finisheds-container-small .body .description-task-box,
+.finisheds-container-small .body .time-task-box{
+    width: 100%;
+    height: 60px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+} 

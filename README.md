@@ -47,4 +47,14 @@ Para iniciar o _backend_ basta executar
 npm start
 ```
 
-#### Frontend em desenvolvimento...
+#### Frontend
+
+Na pasta _frontend_ rode o comando de instalação dos pacotes com npm
+```
+npm install
+```
+
+Para iniciar o _frontend_ basta executar
+```
+npm start
+```

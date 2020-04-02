@@ -31,7 +31,18 @@ Desenvolvido em ReactJS
 - [Supertest](https://www.npmjs.com/package/supertest)
 - [Nodemon](https://nodemon.io/)
 - [Cross-env](https://www.npmjs.com/package/cross-env)
+- [Cors](https://expressjs.com/en/resources/middleware/cors.html)
+- [Crypto]()
 - Banco de Dados: [SQLite](https://www.sqlite.org/index.html)
+
+#### Frontend
+- [ReactJS](https://pt-br.reactjs.org/)
+- [Axios](https://github.com/axios/axios)
+- [Material-UI](https://material-ui.com/)
+- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [React Icons](https://react-icons.netlify.com/#/)
+- [React Lottie](https://www.npmjs.com/package/react-lottie)
+- [React Responsive](https://www.npmjs.com/package/react-responsive)
 
 ## Instalação
 
@@ -47,4 +58,14 @@ Para iniciar o _backend_ basta executar
 npm start
 ```
 
-#### Frontend em desenvolvimento...
+#### Frontend
+
+Na pasta _frontend_ rode o comando de instalação dos pacotes com npm
+```
+npm install
+```
+
+Para iniciar o _frontend_ basta executar
+```
+npm start
+```

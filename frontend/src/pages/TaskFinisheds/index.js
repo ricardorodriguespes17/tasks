@@ -14,39 +14,46 @@ import './styles.css'
 
 import api from '../../services/api'
 
+//Funcao que retorna o componente da tela de tarefas concluidas
 export default function TaskFinisheds() {
 
+  //Recupera o id do usuario logado
   const userId = localStorage.getItem('userId')
-
+  //Inicia o history para manipulacao das rotas
   const history = useHistory()
-
+  //Um parametro para abrir ou fechar a gaveta lateral-esquerda
   const [showDrawer, setShowDrawer] = useState(false)
-  const [tasks, setTasks] = useState([])
+  //Recebe todas as tarefas do usuario
+  const [tasksFinisheds, setTasksFinisheds] = useState([])
 
   const isNormal = useMediaQuery({ minWidth: 1000 })
 
-  useEffect(() => {
-    async function loadTask() {
-      await api.get('/tasks', {
-        headers: {
-          authorization: userId
-        }
+  //Chama funcao para carregar as tarefas concluidas
+  useEffect(() => { loadTask() })
+
+  //Funcao para carregar as tarefas concluidas
+  async function loadTask() {
+    await api.get('/tasks', {
+      headers: {
+        authorization: userId
+      }
+    })
+      .then(res => {
+        var tasks = res.data.filter(task => task.status === 'finished')
+        setTasksFinisheds(tasks)
       })
-        .then(res => {
-          setTasks(res.data)
-        })
-        .catch(err => {
+      .catch(err => {
 
-        })
-    }
-    loadTask()
-  }, [userId])
+      })
+  }
 
+  //Funcao chamada para fazer logout do usuario (sair)
   function onLogout() {
     localStorage.clear()
     history.push('/')
   }
 
+  //Retorna o JSX
   return (
     <div className={`finisheds-container${isNormal ? '' : '-small'}`}>
       <Drawer open={showDrawer} close={setShowDrawer} />
@@ -60,14 +67,7 @@ export default function TaskFinisheds() {
       </header>
       <div className="body">
         <ul>
-          {tasks.map(task => {
-            if (task.status === 'finished') {
-              return (
-                <TaskItem task={task} type='finisheds' />
-              )
-            }
-            return null
-          })}
+          {tasksFinisheds.map(task => (<TaskItem task={task} type='finisheds' />))}
         </ul>
 
       </div>

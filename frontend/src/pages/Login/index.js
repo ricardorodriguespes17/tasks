@@ -15,8 +15,11 @@ import './styles.css'
 
 export default function Login() {
 
+  //Recebe o email digitado pelo usuario
   const [email, setEmail] = useState('')
+  //Recebe a senha digitado pelo usuario
   const [password, setPassword] = useState('')
+  //Recebe a verificacao de que a aplicacao esta carregando
   const [isLoading, setLoading] = useState(false)
   //variavel para mudar a frase na tela
   const [phase, setPhase] = useState(1)
@@ -27,19 +30,13 @@ export default function Login() {
     'Cumpra seus objetivos!',
     'Fique feliz ao ver que conseguiu cumprir com seu planejamento'
   ]
-
+  //Inicia o history que fara manipulacoes nas rotas
   const history = useHistory()
-
   //Verifica se a tela esta pelo menos com 1000px de largura
   const isNormal = useMediaQuery({ minWidth: 1000 })
-
+  
+  //Muda a frase de apresentacao a cada 5 segundos (5000 ms)
   useEffect(() => {
-    //Quando iniciar a funcao, limpa o local storage
-    localStorage.clear()
-  }, [])
-
-  useEffect(() => {
-    //Muda a frase de apresentacao a cada 5 segundos (5000 ms)
     setTimeout(changePhases, 5000)
 
     function changePhases() {
@@ -47,15 +44,19 @@ export default function Login() {
     }
   }, [phase, phases])
 
+  //Funcao chamada para fazer o login com os dados digitados
   async function onLogin(event) {
+    //Previni que a pagina recarregue
     event.preventDefault()
-
+    //Indica que ficara carregando ate terminar a acao
     setLoading(true)
 
-    api.post('login', { email, password })
+    await api.post('login', { email, password })
       .then(res => {
         localStorage.setItem('userId', res.data.id)
         localStorage.setItem('userName', res.data.name)
+        //Vai para pagina principal da aplicacao
+        history.push('/main')
       })
       .catch(error => {
         var msg = error.response.data.error
@@ -65,10 +66,11 @@ export default function Login() {
         alert(msg)
       })
 
-    history.push('/main')
+    //Indica que nao esta mais carregando
     setLoading(false)
   }
 
+  //Retorna o JSX
   return (
     <div className={`login-container${isNormal ? '' : '-small'}`}>
       <div className="presentation-content">

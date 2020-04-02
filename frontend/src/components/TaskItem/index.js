@@ -11,14 +11,17 @@ import './styles.css'
 
 import api from '../../services/api'
 
+//Componenete retorna uma tarefa que ficara no grid principal ou na lista de concluidas
 export default function TaskItem({ task, openTask, type }) {
-
-  const [time, setTime] = useState('')
-
+  
+  //Recupera o id do usuario logado
   const userId = localStorage.getItem('userId')
-
+  //Recebe o tempo atual da tarefa para ser mostrado no componente
+  const [time, setTime] = useState('')
+  //Inicia o history que fara manipulacoes nas rotas
   const history = useHistory()
 
+  //Atualiza o tempo de vida da tarefa no inicio e repete isso a cada 1000ms
   useEffect(() => {
     setTime(taskTime(
       task.status,
@@ -33,6 +36,7 @@ export default function TaskItem({ task, openTask, type }) {
     )), 1000)
   }, [task])
 
+  //Funcao chamada para reabrir a tarefa concluida
   function onRestart() {
     api.put(`tasks/${task.id}`, {
       title: task.title,
@@ -49,6 +53,7 @@ export default function TaskItem({ task, openTask, type }) {
     history.push('/main')
   }
 
+  //Retorna o JSX
   return (
     <li id={task.id} onClick={() => type === 'active' ? openTask(task) : null} className={type === 'active' ? 'task-grid' : 'task-list'} >
       <div className="title-task">

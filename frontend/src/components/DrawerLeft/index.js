@@ -9,6 +9,7 @@ import {
 
 import './styles.css'
 
+//Funcao retorna uma gaveta lateral-esquerda na tela com algumas opcoes
 export default function DrawerNavigation({ open, close }) {
   return (
     <Drawer anchor='left' open={open} onClose={() => close(false)}>

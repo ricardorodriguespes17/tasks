@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 
@@ -12,22 +12,23 @@ import logoImg from '../../assets/logo.png'
 
 import './styles.css'
 
+//Funcao que retorno o componente da tela de cadastro
 export default function Signup() {
 
+  //Recebe o nome que o usuario digita
   const [name, setName] = useState('')
+  //Recebe o email que o usuario digita
   const [email, setEmail] = useState('')
+  //Recebe a senha que o usuario digita
   const [password, setPassword] = useState('')
+  //Recebe a indicacao de que a aplicacao esta carregando
   const [loading, setLoading] = useState(false)
-
+  //Inicia o history para manipulacao das rotas
   const history = useHistory()
-
+  //Verifica se a tela tem no minimo 1000px de largura
   const isNormal = useMediaQuery({ minWidth: 1000 })
 
-  useEffect(() => {
-    //Quando iniciar a funcao, limpa o local storage
-    localStorage.clear()
-  }, [])
-
+  //Funcao que realiza manda para o servidor os dados de cadastro do usuario
   async function onSignup() {
     setLoading(true)
 
@@ -45,6 +46,7 @@ export default function Signup() {
     setLoading(false)
   }
 
+  //Retorna o JSX
   return (
     <div className={`signup-container${isNormal ? '' : '-small'}`}>
       <div className="presentation-content">

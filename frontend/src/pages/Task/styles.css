@@ -20,11 +20,26 @@
     height: 10%;
 }
 
-.task-container header text,
-.task-container-small header text {
+.task-container header input,
+.task-container-small header input {
     margin-left: 20px;
-    color: #87CEFA;
+    color: #222;
     font-size: 36px;
+    border: 0;
+    background-color: #FAFAFA;
+}
+
+.task-container header button,
+.task-container-small header button {
+    background-color: #FAFAFA;
+    color: #222;
+    width: 200px;
+}
+
+.task-container header button text,
+.task-container-small header button text {
+    color: #222;
+    font-size: 18px;
 }
 
 /* Sub Header */
@@ -107,9 +122,14 @@
     height: 60%;
 }
 
-.task-container .description-box text,
-.task-container-small .description-box text {
+.task-container .description-box textarea,
+.task-container-small .description-box textarea {
     font-size: 24px;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: 0;
+    background-color: #FAFAFA;
 }
 
 /* Box dos Botoes */

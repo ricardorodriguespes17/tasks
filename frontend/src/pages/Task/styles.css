@@ -1,3 +1,4 @@
+/* Container da tela */
 .task-container {
     display: flex;
     flex-direction: column;
@@ -12,6 +13,7 @@
     height: 100vh;
 }
 
+/* Cabecalho dessa tela */
 .task-container header,
 .task-container-small header {
     justify-content: start;
@@ -25,14 +27,45 @@
     font-size: 36px;
 }
 
-.task-container .time-box,
+/* Sub Header */
+.task-container .sub-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+
+.task-container-small .sub-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+}
+
+/* Box do tempo */
+.task-container .time-box{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    height: 100%;
+    width: 100%;
+}
+
 .task-container-small .time-box {
     height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 20px;
-    height: 10%;
+    background-color: #FFF;
+    height: 50%;
+    width: 100%;
 }
 
 .task-container .time-box text,
@@ -40,9 +73,33 @@
     margin-left: 10px;
 }
 
+/* Botao Finish */
+.task-container .button-finish {
+    width: 200px;
+    height: 40px;
+    background-color: #FFF;
+}
+
+.task-container-small .button-finish {
+    width: 100%;
+    height: 50%;
+    background-color: #FFF;
+}
+
+.task-container .button-finish text {
+    font-size: 18px;
+    color: #AA0000;
+}
+
+.task-container-small .button-finish text {
+    font-size: 16px;
+    color: #AA0000;
+}
+
+/* Box da Descricao */
 .task-container .description-box {
     padding: 10px 20px;
-    height: 65%;
+    height: 55%;
 }
 
 .task-container-small .description-box {
@@ -55,6 +112,7 @@
     font-size: 24px;
 }
 
+/* Box dos Botoes */
 .task-container .buttons-box {
     display: flex;
     flex-direction: row;
@@ -71,16 +129,17 @@
     justify-content: space-around;
 }
 
+/* Botao Start */
 .task-container .buttons-box .button-start {
     width: 45%;
     height: 60px;
-    background-color: #DDD;
+    background-color: #E0FFFF;
 }
 
 .task-container-small .buttons-box .button-start {
     width: 100%;
     height: 60px;
-    background-color: #DDD;
+    background-color: #E0FFFF;
 }
 
 .task-container .buttons-box .button-start text {
@@ -93,24 +152,25 @@
     color: #006400;
 }
 
-.task-container .buttons-box .button-finish {
+/* Botao Pause */
+.task-container .buttons-box .button-stop {
     width: 45%;
     height: 60px;
-    background-color: #DDD;
+    background-color: #E0FFFF;
 }
 
-.task-container-small .buttons-box .button-finish {
+.task-container-small .buttons-box .button-stop {
     width: 100%;
     height: 60px;
-    background-color: #DDD;
+    background-color: #E0FFFF;
 }
 
-.task-container .buttons-box .button-finish text {
+.task-container .buttons-box .button-stop text {
     font-size: 28px;
-    color: #EE0000;
+    color: #BB6400;
 }
 
-.task-container-small .buttons-box .button-finish text {
+.task-container-small .buttons-box .button-stop text {
     font-size: 18px;
-    color: #EE0000;
+    color: #BB6400;
 }

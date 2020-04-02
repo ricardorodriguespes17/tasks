@@ -78,7 +78,13 @@ async function update(request, response) {
       finishedIn: formatToDateTimeSQL(finishedIn)
     })
 
-  return response.status(204).send()
+  return response.status(201).json({
+    title,
+    description,
+    startedIn: formatToDateTimeSQL(startedIn),
+    status,
+    finishedIn: formatToDateTimeSQL(finishedIn)
+  })
 }
 
 async function del(request, response) {

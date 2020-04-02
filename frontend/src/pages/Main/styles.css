@@ -49,67 +49,16 @@
     list-style: none;
 }
 
-.main-container .body li, .main-container-small .body li {
-    background-color: #E0FFFF;
-}
-
-.main-container li a,
-.main-container-small li a {
-    text-decoration: none;
-}
-
-
-.main-container .body li text, .main-container-small .body li text {
-    color: #222222;
-}
-
-.main-container .body .title-task, .main-container-small .body .title-task {
-    width: 100%;
-    height: 60px;
-    background-color: rgb(33, 33, 33, 0.3);
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.main-container .body .title-task text, .main-container-small .body .title-task text {
-    font-size: 32px;
-    color: #FFF
-}
-
-.main-container .body .description-task-box, .main-container-small .body .description-task-box {
-    width: 100%;
-    height: 150px;
-    padding: 5px 10px;
-}
-
-.main-container .body .description-task-box text, .main-container-small .body .description-task-box text {
-    font-size: 24px;
-    color: #222
-}
-
-.main-container .body .time-task-box, .main-container-small .body .time-task-box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    padding-left: 10px;
-}
-
-.main-container .body .time-task-box text, .main-container-small .body .time-task-box text {
-    font-size: 24px;
-    color: #222
-}
-
-.main-container button, .main-container-small button {
-    position: absolute;
+.main-container .fab, .main-container-small .fab {
+    cursor: pointer;
+    position: fixed;
     right: 20px;
     bottom: 20px;
     width: 80px;
     height: 80px;
     border-radius: 40px;
     background-color: #87CEFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

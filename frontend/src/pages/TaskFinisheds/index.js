@@ -1,22 +1,51 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
+import { useHistory } from 'react-router'
 
-import Drawer from '../../components/Drawer'
+import Drawer from '../../components/DrawerLeft'
+import TaskItem from '../../components/TaskItem'
 
 import {
   MdMenu as MenuIcon,
-  MdInput as LogoutIcon,
-  MdAccessAlarm as ClockIcon
+  MdInput as LogoutIcon
 } from 'react-icons/md'
 
 import './styles.css'
 
+import api from '../../services/api'
+
 export default function TaskFinisheds() {
 
+  const userId = localStorage.getItem('userId')
+
+  const history = useHistory()
+
   const [showDrawer, setShowDrawer] = useState(false)
+  const [tasks, setTasks] = useState([])
 
   const isNormal = useMediaQuery({ minWidth: 1000 })
+
+  useEffect(() => {
+    async function loadTask() {
+      await api.get('/tasks', {
+        headers: {
+          authorization: userId
+        }
+      })
+        .then(res => {
+          setTasks(res.data)
+        })
+        .catch(err => {
+
+        })
+    }
+    loadTask()
+  }, [userId])
+
+  function onLogout() {
+    localStorage.clear()
+    history.push('/')
+  }
 
   return (
     <div className={`finisheds-container${isNormal ? '' : '-small'}`}>
@@ -24,58 +53,21 @@ export default function TaskFinisheds() {
       <header>
         <MenuIcon size={isNormal ? 48 : 32} color='#87CEFA' onClick={() => setShowDrawer(true)} />
         <text className="title">Tarefas Concluídas</text>
-        <Link>
+        <div className="header-button" onClick={onLogout} title='Sair'>
           <text>Sair</text>
           <LogoutIcon size={isNormal ? 48 : 32} color='#87CEFA' />
-        </Link>
+        </div>
       </header>
       <div className="body">
         <ul>
-          <li>
-            <div className="title-task">
-              <text>Tarefa 1</text>
-            </div>
-            <div className="description-task-box">
-              <text>Detalhes da tarefa...</text>
-            </div>
-            <div className="time-task-box">
-              <ClockIcon size={isNormal ? 32 : 24} color='#222' />
-              <text>00:00:00</text>
-            </div>
-            <button onClick={() => {}}>
-              <text>Reabrir tarefa</text>
-            </button>
-          </li>
-          <li>
-            <div className="title-task">
-              <text>Tarefa 1</text>
-            </div>
-            <div className="description-task-box">
-              <text>Detalhes da tarefa...</text>
-            </div>
-            <div className="time-task-box">
-              <ClockIcon size={isNormal ? 32 : 24} color='#222' />
-              <text>00:00:00</text>
-            </div>
-            <button onClick={() => {}}>
-              <text>Reabrir tarefa</text>
-            </button>
-          </li>
-          <li>
-            <div className="title-task">
-              <text>Tarefa 1</text>
-            </div>
-            <div className="description-task-box">
-              <text>Detalhes da tarefa...</text>
-            </div>
-            <div className="time-task-box">
-              <ClockIcon size={isNormal ? 32 : 24} color='#222' />
-              <text>00:00:00</text>
-            </div>
-            <button onClick={() => {}}>
-              <text>Reabrir tarefa</text>
-            </button>
-          </li>
+          {tasks.map(task => {
+            if (task.status === 'finished') {
+              return (
+                <TaskItem task={task} type='finisheds' />
+              )
+            }
+            return null
+          })}
         </ul>
 
       </div>

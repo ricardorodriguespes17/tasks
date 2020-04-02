@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
+
+import api from '../../services/api'
 
 import Lottie from 'react-lottie'
 import { MdSubdirectoryArrowLeft as ArrowLeft } from 'react-icons/md'
@@ -12,7 +14,31 @@ import './styles.css'
 
 export default function Signup() {
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const history = useHistory()
+
   const isNormal = useMediaQuery({ minWidth: 1000 })
+
+  async function onSignup() {
+    setLoading(true)
+
+    api.post('signup', { name, email })
+      .then(res => {
+        console.log(res.data.id)
+        alert(`Seu id é ${res.data.id}`)
+        history.push('/')
+      })
+      .catch(err => {
+        var msg = err.response.data.error
+        if (err.response.data.error === 'Email is being used') { msg = 'Email já cadastrado' }
+        alert(msg)
+      })
+
+    setLoading(false)
+  }
 
   return (
     <div className={`signup-container${isNormal ? '' : '-small'}`}>
@@ -32,13 +58,27 @@ export default function Signup() {
         <text>Com poucas informações e um click, você estará cadastrado.</text>
       </div>
       <div className="inputs-content">
-        <img src={logoImg} className="logo" />
+        <img src={logoImg} alt='Tasks' className="logo" />
         <form>
           <text>Nome</text>
-          <input className="input" title='Digite o seu nome' />
+          <input
+            className="input"
+            title='Digite o seu nome'
+            value={name}
+            onChange={(event) => setName(event.target.value)} />
           <text>Email</text>
-          <input className="input" type="email" title='Digite o seu email' />
-          <button type="submit" onClick={() => { }} title='Entrar' className="button">
+          <input
+            className="input"
+            type="email"
+            title='Digite o seu email'
+            value={email}
+            onChange={(event) => setEmail(event.target.value)} />
+          <button
+            type="submit"
+            disabled={loading}
+            onClick={onSignup}
+            title='Entrar'
+            className="button">
             <text>Entrar</text>
           </button>
           <Link to='/' className="link">

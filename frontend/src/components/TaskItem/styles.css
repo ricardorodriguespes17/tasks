@@ -1,0 +1,117 @@
+.task-grid {
+    background-color: #E0FFFF;
+    cursor: pointer;
+}
+
+.task-grid a {
+    text-decoration: none;
+}
+
+.task-grid text {
+    color: #222222;
+}
+
+.task-grid .title-task {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(33, 33, 33, 0.3);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-grid .title-task .title {
+    font-size: 32px;
+    color: #FFF
+}
+
+.task-grid .description-task-box {
+    width: 100%;
+    height: 150px;
+    padding: 5px 10px;
+}
+
+.task-grid .description-task-box text {
+    font-size: 24px;
+    color: #222
+}
+
+.task-grid .time-task-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+}
+
+.task-grid .time-task-box text {
+    font-size: 24px;
+    color: #222
+}
+
+/* Modo Lista */
+
+.task-list {
+    background-color: #E0FFFF;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.task-list a {
+    text-decoration: none;
+}
+
+.task-list .title-task {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-list .title-task .title {
+    font-size: 32px;
+}
+
+.task-list .description-task-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.task-list .description-task-box text {
+    font-size: 24px;
+    color: #222
+}
+
+.task-list .time-task-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.task-list .time-task-box text {
+    font-size: 24px;
+    color: #222
+}
+
+.task-list button {
+    height: 100%;
+    border-radius: 0;
+    font-size: 18px;
+    color: #FFF;
+    background-color: rgb(33, 33, 33, 0.3);
+}

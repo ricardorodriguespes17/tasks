@@ -6,7 +6,6 @@ import Signup from './pages/Signup'
 import Main from './pages/Main'
 import Task from './pages/Task'
 import TaskFinisheds from './pages/TaskFinisheds'
-import Trash from './pages/Trash'
 
 export default function Routes(){
     return (
@@ -17,7 +16,6 @@ export default function Routes(){
                 <Route path='/main' component={Main} />
                 <Route path='/task' component={Task} />
                 <Route path='/finisheds' component={TaskFinisheds} />
-                <Route path='/trash' component={Trash} />
             </Switch>
         </Router>
     )

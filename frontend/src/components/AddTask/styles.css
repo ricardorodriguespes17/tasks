@@ -1,0 +1,24 @@
+.list-drawer {
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+}
+
+.list-drawer .list-item {
+    display: flex;
+    justify-content: center;
+}
+
+.list-drawer h1 {
+    margin-bottom: 10px;
+}
+
+.list-drawer button {
+    margin-top: 20px;
+    font-size: 18px;
+}

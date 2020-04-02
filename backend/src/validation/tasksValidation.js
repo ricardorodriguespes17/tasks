@@ -34,13 +34,13 @@ function update() {
     [Segments.PARAMS]: Joi.object().keys({
       id: Joi.number().integer().required()
     }),
-    [Segments.BODY]: Joi.object().keys({
-      title: Joi.string().required(),
-      description: Joi.string().required(),
-      startedIn: Joi.date(),
-      finishedIn: Joi.date(),
-      status: Joi.string().required()
-    })
+    // [Segments.BODY]: Joi.object().keys({
+    //   title: Joi.string().required(),
+    //   description: Joi.string().required(),
+    //   startedIn: Joi.date(),
+    //   finishedIn: Joi.date(),
+    //   status: Joi.string().required()
+    // })
   })
 }
 

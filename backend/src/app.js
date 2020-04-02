@@ -11,11 +11,14 @@ const express = require('express')
 const routes = require('./routes')
 //Importando errors do celebrate para o express usar nas rotas
 const { errors } = require('celebrate')
+//Importando o cors
+const cors = require('cors')
 
 //Inicializando express
 const app = express()
 //Passando parametros para o express usar
 app.use(express.json())
+app.use(cors())
 app.use(routes)
 app.use(errors())
 

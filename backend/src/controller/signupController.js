@@ -8,6 +8,8 @@
 const connection = require('../database/connection')
 //Importando funcao que gera id
 const generateUniqueId = require('../utils/generateUniqueId')
+//Importando funcao de criptografia
+const cryptograph = require('../utils/cryptograph')
 
 async function index(request, response) {
     //Selecionando todos os dados de todos os usuarios (caso de teste)
@@ -18,7 +20,7 @@ async function index(request, response) {
 
 async function create(request, response) {
     //Recebendo dados da requisicao
-    const { name, email } = request.body
+    const { name, email, password } = request.body
     const id = generateUniqueId()
 
     const user = await connection('users')
@@ -29,10 +31,13 @@ async function create(request, response) {
     if(user)
         return response.status(400).json({error: 'Email is being used'})
 
+    const cryptoPassword = cryptograph(password)
+
     //Inserindo dados do novo usuario
     await connection('users').insert({
         name,
         email,
+        password: cryptoPassword,
         id
     })
 

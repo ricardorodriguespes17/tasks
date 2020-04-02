@@ -6,21 +6,29 @@
 
 //Importando conexao com o bd
 const connection = require('../database/connection')
+//Importando funcao de criptografia
+const cryptograph = require('../utils/cryptograph')
 
 async function create(request, response) {
   //Recebendo dados da requisicao
-  const { id } = request.body
+  const { email, password } = request.body
+  //Criptografando senha recebida para comparacao
+  const cryptoPassword = cryptograph(password)
 
   //Verificando se existe um usuario com o id enviado, e retorna o nome dele
-  const name = await connection('users')
-    .where('id', '=', id)
-    .select('name')
+  const user = await connection('users')
+    .where('email', '=', email)
+    .select(['id', 'password', 'name'])
     .first()
 
-  if (!name)
-    return response.status(400).json({ error: 'No user found with this ID' })
+  if (user && user.id) {
+    if (cryptoPassword === user.password)
+      return response.json({ id: user.id, name: user.name })
 
-  return response.json(name)
+    return response.status(401).json({ error: 'Incorret password' })
+  }
+
+  return response.status(400).json({ error: 'No user found with this email' })
 }
 
 //Exportando a funcao create do login

@@ -29,9 +29,11 @@ describe('Integration tests', () => {
   })
 
   it('Should be able to login', async () => {
-    const { id } = (await signup()).body
-    const response = await login(id)
+    await signup()
+    const response = await login()
 
+    expect(response.body)
+    expect(response.body).toHaveProperty('id')
     expect(response.body).toHaveProperty('name')
     expect(201)
   })

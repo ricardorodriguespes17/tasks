@@ -31,7 +31,9 @@ export default function DrawerNavigation({ open, close }) {
         history.go('/main')
       })
       .catch(err => {
-        alert('Erro ao adicionar tarefa')
+        var msg = err.response.data.error
+        if (err.response.data.error === 'Bad Request') { msg = 'Insira os dados corretamente' }
+        alert(msg)
       })
   }
 

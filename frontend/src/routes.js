@@ -6,16 +6,23 @@ import Signup from './pages/Signup'
 import Main from './pages/Main'
 import Task from './pages/Task'
 import TaskFinisheds from './pages/TaskFinisheds'
+import ProtectPage from './components/ProtectPage'
 
-export default function Routes(){
+export default function Routes() {
     return (
         <Router>
             <Switch>
                 <Route path='/' exact component={Login} />
                 <Route path='/signup' component={Signup} />
-                <Route path='/main' component={Main} />
-                <Route path='/task' component={Task} />
-                <Route path='/finisheds' component={TaskFinisheds} />
+                <ProtectPage path='/main'>
+                    <Main />
+                </ProtectPage>
+                <ProtectPage path='/task'>
+                    <Task />
+                </ProtectPage>
+                <ProtectPage path='/finisheds'>
+                    <TaskFinisheds />
+                </ProtectPage>
             </Switch>
         </Router>
     )

@@ -15,9 +15,12 @@ import './styles.css'
 
 export default function Login() {
 
-  const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [isLoading, setLoading] = useState(false)
+  //variavel para mudar a frase na tela
   const [phase, setPhase] = useState(1)
+  //Frases usadas na parte de apresentacao
   const phases = [
     'Passe a organizar melhor suas tarefas e seu tempo!',
     'Melhore sua rotina e produtividade',
@@ -27,9 +30,16 @@ export default function Login() {
 
   const history = useHistory()
 
+  //Verifica se a tela esta pelo menos com 1000px de largura
   const isNormal = useMediaQuery({ minWidth: 1000 })
 
   useEffect(() => {
+    //Quando iniciar a funcao, limpa o local storage
+    localStorage.clear()
+  }, [])
+
+  useEffect(() => {
+    //Muda a frase de apresentacao a cada 5 segundos (5000 ms)
     setTimeout(changePhases, 5000)
 
     function changePhases() {
@@ -42,18 +52,20 @@ export default function Login() {
 
     setLoading(true)
 
-    api.post('login', { id })
+    api.post('login', { email, password })
       .then(res => {
-        localStorage.setItem('userId', id)
+        localStorage.setItem('userId', res.data.id)
         localStorage.setItem('userName', res.data.name)
-        history.push('/main')
       })
       .catch(error => {
         var msg = error.response.data.error
-        if (error.response.data.error === 'No user found with this ID') { msg = 'Nenhum usuário com esse id' }
+        if (error.response.data.error === 'No user found with this email') { msg = 'Nenhum usuário com esse email' }
+        if (error.response.data.error === 'Incorret password') { msg = 'Senha incorreta' }
+        if (error.response.data.error === 'Bad Request') { msg = 'Insira os dados corretamente' }
         alert(msg)
       })
 
+    history.push('/main')
     setLoading(false)
   }
 
@@ -76,12 +88,19 @@ export default function Login() {
       <div className="inputs-content">
         <img src={logoImg} alt='Tasks' className="logo" />
         <form>
-          <text>Entre com o id</text>
+          <text>Email</text>
           <input
             className="input"
-            title='Digite o id'
-            value={id}
-            onChange={(event) => setId(event.target.value)} />
+            title='Digite o email'
+            value={email}
+            onChange={(event) => setEmail(event.target.value)} />
+          <text>Senha</text>
+          <input
+            className="input"
+            type='password'
+            title='Digite a senha'
+            value={password}
+            onChange={(event) => setPassword(event.target.value)} />
           <button
             type='submit'
             disabled={isLoading}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 
@@ -16,24 +16,29 @@ export default function Signup() {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
   const history = useHistory()
 
   const isNormal = useMediaQuery({ minWidth: 1000 })
 
+  useEffect(() => {
+    //Quando iniciar a funcao, limpa o local storage
+    localStorage.clear()
+  }, [])
+
   async function onSignup() {
     setLoading(true)
 
-    api.post('signup', { name, email })
+    api.post('signup', { name, email, password })
       .then(res => {
-        console.log(res.data.id)
-        alert(`Seu id é ${res.data.id}`)
         history.push('/')
       })
       .catch(err => {
         var msg = err.response.data.error
         if (err.response.data.error === 'Email is being used') { msg = 'Email já cadastrado' }
+        if (err.response.data.error === 'Bad Request') { msg = 'Insira os dados corretamente' }
         alert(msg)
       })
 
@@ -73,6 +78,13 @@ export default function Signup() {
             title='Digite o seu email'
             value={email}
             onChange={(event) => setEmail(event.target.value)} />
+          <text>Senha</text>
+          <input
+            className="input"
+            type="password"
+            title='Digite o seu senha'
+            value={password}
+            onChange={(event) => setPassword(event.target.value)} />
           <button
             type="submit"
             disabled={loading}

@@ -21,9 +21,11 @@ import TimeFormat from '../../utils/TimeFormat'
 
 export default function Main() {
 
-  const userName = localStorage.getItem('userName')
-  const userFirstName = userName.split(' ')[0]
   const userId = localStorage.getItem('userId')
+  const userName = localStorage.getItem('userName')
+  var userFirstName
+  if(userName)
+    userFirstName = userName.split(' ')[0]
 
   const [seconds, setSeconds] = useState(0)
   const [showDrawerLeft, setShowDrawerLeft] = useState(false)

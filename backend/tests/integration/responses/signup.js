@@ -8,7 +8,8 @@ module.exports = async function signup() {
     .post('/signup')
     .send({
       name: 'Ricardo',
-      email: 'ricardo@gmail.com'
+      email: 'ricardo@gmail.com',
+      password: '123456'
     })
 
   return response

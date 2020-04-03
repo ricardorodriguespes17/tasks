@@ -46,6 +46,8 @@ Desenvolvido em ReactJS
 
 ## Instalação
 
+Precisa ter instalado o [NodeJS](https://nodejs.org/pt-br/) na máquina
+
 #### Backend
 
 Na pasta _backend_ rode o comando de instalação dos pacotes com npm

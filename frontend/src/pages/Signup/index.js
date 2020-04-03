@@ -93,7 +93,7 @@ export default function Signup() {
             onClick={onSignup}
             title='Entrar'
             className="button">
-            <text>Entrar</text>
+            <text>Cadastrar</text>
           </button>
           <Link to='/' className="link">
             <ArrowLeft size={24} color='#87CEFA' />

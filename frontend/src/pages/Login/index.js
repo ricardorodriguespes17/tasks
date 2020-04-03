@@ -34,7 +34,7 @@ export default function Login() {
   const history = useHistory()
   //Verifica se a tela esta pelo menos com 1000px de largura
   const isNormal = useMediaQuery({ minWidth: 1000 })
-  
+
   //Muda a frase de apresentacao a cada 5 segundos (5000 ms)
   useEffect(() => {
     setTimeout(changePhases, 5000)
@@ -56,7 +56,12 @@ export default function Login() {
         localStorage.setItem('userId', res.data.id)
         localStorage.setItem('userName', res.data.name)
         //Vai para pagina principal da aplicacao
-        history.push('/main')
+        history.push({
+          pathname: '/main',
+          state: {
+            userId: res.data.userId
+          }
+        })
       })
       .catch(error => {
         var msg = error.response.data.error

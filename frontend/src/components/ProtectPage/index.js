@@ -1,10 +1,13 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
-
-const isAuthenticated = localStorage.getItem('userId') !== null
+import { Route, Redirect, useHistory } from 'react-router-dom'
 
 //Retorna o componente que ficara em volta do componente que sera protegido pela autenticacao
 export default function ProtectPage({ children, ...rest }) {
+
+  const history = useHistory()
+
+  const isAuthenticated = history.location.state.userId !== null
+
   if(!isAuthenticated) {
     alert('Não autenticado')
   }

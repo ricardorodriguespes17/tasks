@@ -6,9 +6,14 @@ export default function ProtectPage({ children, ...rest }) {
 
   const history = useHistory()
 
-  const isAuthenticated = history.location.state.userId !== null
+  var isAuthenticated
+  if (history.location.state && history.location.state.userId) {
+    isAuthenticated = history.location.state.userId !== null
+  } else {
+    isAuthenticated = localStorage.getItem('userId') !== null
+  }
 
-  if(!isAuthenticated) {
+  if (!isAuthenticated) {
     alert('Não autenticado')
   }
 
